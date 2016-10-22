@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57964683C05249AEBC16A666 /* Pods_Fittr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CD8F8E04AB414427C64416 /* Pods_Fittr.framework */; };
 		D85C255A1DBB013300D691BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85C25591DBB013300D691BA /* AppDelegate.swift */; };
 		D85C255C1DBB013300D691BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85C255B1DBB013300D691BA /* ViewController.swift */; };
 		D85C255F1DBB013300D691BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85C255D1DBB013300D691BA /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32CD8F8E04AB414427C64416 /* Pods_Fittr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fittr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		565E9EBCA084011892442BEC /* Pods-Fittr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fittr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fittr/Pods-Fittr.debug.xcconfig"; sourceTree = "<group>"; };
+		D0BF20B0B262E1365107DC71 /* Pods-Fittr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fittr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fittr/Pods-Fittr.release.xcconfig"; sourceTree = "<group>"; };
 		D85C25561DBB013300D691BA /* Fittr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fittr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D85C25591DBB013300D691BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D85C255B1DBB013300D691BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57964683C05249AEBC16A666 /* Pods_Fittr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82C70B3D06307B36E9CAE8B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32CD8F8E04AB414427C64416 /* Pods_Fittr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B88300BA6BFEF8180967AEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				565E9EBCA084011892442BEC /* Pods-Fittr.debug.xcconfig */,
+				D0BF20B0B262E1365107DC71 /* Pods-Fittr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D85C254D1DBB013300D691BA = {
 			isa = PBXGroup;
 			children = (
 				D85C25581DBB013300D691BA /* Fittr */,
 				D85C25571DBB013300D691BA /* Products */,
+				9B88300BA6BFEF8180967AEE /* Pods */,
+				82C70B3D06307B36E9CAE8B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D85C256B1DBB013400D691BA /* Build configuration list for PBXNativeTarget "Fittr" */;
 			buildPhases = (
+				CB76048B193AC17F29833336 /* [CP] Check Pods Manifest.lock */,
 				D85C25521DBB013300D691BA /* Sources */,
 				D85C25531DBB013300D691BA /* Frameworks */,
 				D85C25541DBB013300D691BA /* Resources */,
+				84813CD118994CDB90BFF2CA /* [CP] Embed Pods Frameworks */,
+				C677DF5454955A6F4CB68C65 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -100,6 +127,7 @@
 					D85C25551DBB013300D691BA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EEL7HA3WWW;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,6 +162,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84813CD118994CDB90BFF2CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fittr/Pods-Fittr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C677DF5454955A6F4CB68C65 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fittr/Pods-Fittr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB76048B193AC17F29833336 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D85C25521DBB013300D691BA /* Sources */ = {
@@ -261,6 +337,7 @@
 		};
 		D85C256C1DBB013400D691BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 565E9EBCA084011892442BEC /* Pods-Fittr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EEL7HA3WWW;
@@ -274,6 +351,7 @@
 		};
 		D85C256D1DBB013400D691BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0BF20B0B262E1365107DC71 /* Pods-Fittr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EEL7HA3WWW;
@@ -304,6 +382,7 @@
 				D85C256D1DBB013400D691BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
