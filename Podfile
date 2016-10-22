@@ -10,5 +10,6 @@ target 'Fittr' do
     pod 'Alamofire',
     :git => 'https://github.com/Alamofire/Alamofire.git',
     :branch => 'master'
+    pod 'Stripe'
 
 end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57964683C05249AEBC16A666 /* Pods_Fittr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CD8F8E04AB414427C64416 /* Pods_Fittr.framework */; };
+		76F5C6F41DBBC79000E4AF70 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5C6F31DBBC79000E4AF70 /* PaymentViewController.swift */; };
 		D85C255A1DBB013300D691BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85C25591DBB013300D691BA /* AppDelegate.swift */; };
 		D85C255C1DBB013300D691BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85C255B1DBB013300D691BA /* ViewController.swift */; };
 		D85C255F1DBB013300D691BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85C255D1DBB013300D691BA /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		32CD8F8E04AB414427C64416 /* Pods_Fittr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fittr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		565E9EBCA084011892442BEC /* Pods-Fittr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fittr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fittr/Pods-Fittr.debug.xcconfig"; sourceTree = "<group>"; };
+		76F5C6F31DBBC79000E4AF70 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		D0BF20B0B262E1365107DC71 /* Pods-Fittr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fittr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fittr/Pods-Fittr.release.xcconfig"; sourceTree = "<group>"; };
 		D85C25561DBB013300D691BA /* Fittr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fittr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D85C25591DBB013300D691BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				D85C25591DBB013300D691BA /* AppDelegate.swift */,
 				D85C255B1DBB013300D691BA /* ViewController.swift */,
 				D85C255D1DBB013300D691BA /* Main.storyboard */,
+				76F5C6F31DBBC79000E4AF70 /* PaymentViewController.swift */,
 				D85C25631DBB013300D691BA /* Assets.xcassets */,
 				D85C25651DBB013300D691BA /* LaunchScreen.storyboard */,
 				D85C25681DBB013400D691BA /* Info.plist */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F5C6F41DBBC79000E4AF70 /* PaymentViewController.swift in Sources */,
 				D8F392511DBBAFCF009FEF15 /* DraggableView.swift in Sources */,
 				D85C25621DBB013300D691BA /* Fittr.xcdatamodeld in Sources */,
 				D85C255C1DBB013300D691BA /* ViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import Alamofire
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
    
+    @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var sliderOutlet: UISlider!
     
     @IBOutlet weak var sliderAge: UILabel!
@@ -25,7 +26,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBAction func selectPic(_ sender: AnyObject) {
         selectPicture();
-
+        uploadButton.isHidden = true
     }
     @IBAction func stripeButton(_ sender: AnyObject) {
         var parameter:Parameters = [
