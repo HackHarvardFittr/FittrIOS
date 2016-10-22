@@ -14,6 +14,9 @@
 		D85C25621DBB013300D691BA /* Fittr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D85C25601DBB013300D691BA /* Fittr.xcdatamodeld */; };
 		D85C25641DBB013300D691BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85C25631DBB013300D691BA /* Assets.xcassets */; };
 		D85C25671DBB013400D691BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85C25651DBB013300D691BA /* LaunchScreen.storyboard */; };
+		D8F3924D1DBBAF6B009FEF15 /* TinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F3924C1DBBAF6B009FEF15 /* TinderViewController.swift */; };
+		D8F3924F1DBBAF9A009FEF15 /* DraggableViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F3924E1DBBAF9A009FEF15 /* DraggableViewBackground.swift */; };
+		D8F392511DBBAFCF009FEF15 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F392501DBBAFCF009FEF15 /* DraggableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		D85C25631DBB013300D691BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D85C25661DBB013300D691BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85C25681DBB013400D691BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8F3924C1DBBAF6B009FEF15 /* TinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderViewController.swift; sourceTree = "<group>"; };
+		D8F3924E1DBBAF9A009FEF15 /* DraggableViewBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableViewBackground.swift; sourceTree = "<group>"; };
+		D8F392501DBBAFCF009FEF15 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 		D85C25581DBB013300D691BA /* Fittr */ = {
 			isa = PBXGroup;
 			children = (
+				D8F3924B1DBBAF3A009FEF15 /* TinderSwipeEffect */,
 				D85C25591DBB013300D691BA /* AppDelegate.swift */,
 				D85C255B1DBB013300D691BA /* ViewController.swift */,
 				D85C255D1DBB013300D691BA /* Main.storyboard */,
@@ -89,6 +96,16 @@
 				D85C25601DBB013300D691BA /* Fittr.xcdatamodeld */,
 			);
 			path = Fittr;
+			sourceTree = "<group>";
+		};
+		D8F3924B1DBBAF3A009FEF15 /* TinderSwipeEffect */ = {
+			isa = PBXGroup;
+			children = (
+				D8F3924C1DBBAF6B009FEF15 /* TinderViewController.swift */,
+				D8F3924E1DBBAF9A009FEF15 /* DraggableViewBackground.swift */,
+				D8F392501DBBAFCF009FEF15 /* DraggableView.swift */,
+			);
+			name = TinderSwipeEffect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,9 +233,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F392511DBBAFCF009FEF15 /* DraggableView.swift in Sources */,
 				D85C25621DBB013300D691BA /* Fittr.xcdatamodeld in Sources */,
 				D85C255C1DBB013300D691BA /* ViewController.swift in Sources */,
+				D8F3924D1DBBAF6B009FEF15 /* TinderViewController.swift in Sources */,
 				D85C255A1DBB013300D691BA /* AppDelegate.swift in Sources */,
+				D8F3924F1DBBAF9A009FEF15 /* DraggableViewBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
