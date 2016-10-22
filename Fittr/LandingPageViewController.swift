@@ -14,6 +14,8 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var staticBTN: UIButton!
     @IBAction func newPartnerButton(_ sender: AnyObject) {
+        var competitionController = CompetitionViewController()
+        self.navigationController?.pushViewController(competitionController, animated: true)
     }
     @IBAction func staticDetailButton(_ sender: AnyObject) {
     }

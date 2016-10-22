@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let landingPage = LandingPageViewController();
             
-            self.window?.rootViewController = landingPage;
+            var navigationController_2 = UINavigationController(rootViewController: landingPage)
+            self.window?.rootViewController = navigationController_2;
             self.window?.makeKeyAndVisible()
             
             return true

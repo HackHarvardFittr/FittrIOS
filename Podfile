@@ -12,5 +12,6 @@ target 'Fittr' do
     :branch => 'master'
     pod 'Stripe'
     pod 'SwiftGifOrigin'
+    pod 'MLVerticalProgressView'
 
 end
