@@ -20,8 +20,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     public var workoutArray = [String]()
-    public let userDefaults = UserDefaults.standard;
-
+    public let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var profilePicture: UIImageView!
 
     @IBAction func selectPic(_ sender: AnyObject) {

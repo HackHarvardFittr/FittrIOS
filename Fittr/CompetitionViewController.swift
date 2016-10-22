@@ -9,14 +9,59 @@
 import UIKit
 import MLVerticalProgressView
 import SwiftGifOrigin
+import MapKit
+import Alamofire
 
-class CompetitionViewController: UIViewController {
+class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imageB: UIImageView!
-
+    let locationManager = CLLocationManager()
+    var didCallDelegate = false
     @IBAction func checkInButton(_ sender: AnyObject) {
+        didCallDelegate = false
+        self.locationManager.requestAlwaysAuthorization()
         
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
         
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
+    
+    // Delegate method
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if didCallDelegate == true {
+            return
+        }
+        let userDefaults = UserDefaults.standard
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+//        let latNum = Double(locValue.latitude)
+//        let longNum = Double(locValue.longitude)
+        let stringLat = "\(locValue.latitude)"
+        let stringLong = "\(locValue.longitude)"
+        print(stringLat)
+        print(stringLong)
+        userDefaults.set(stringLat, forKey: "lat")
+        userDefaults.set(stringLong, forKey: "long")
+        print("latitude is: \(userDefaults.string(forKey: "lat"))")
+        print("longitude is: \(userDefaults.string(forKey: "long"))")
+        let parameter:Parameters = [
+            "latitude" : stringLat,
+            "longitude" : stringLong
+        ];
+        let url = "http://35.161.109.99:4900/checkin"
+        let headers = [
+            "Content-Type" : "application/x-www-form-urlencoded"
+        ]
+        //
+        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
+            print(response)
+        }
+        didCallDelegate = true
+    }
+    
     @IBOutlet weak var stepsB: UILabel!
     @IBOutlet weak var stepsA: UILabel!
     @IBOutlet weak var imageA: UIImageView!

@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Fittr would like to access your current location.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Please allow motion detection</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Fittr would like to access your current location.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>NSPhotoLibraryUsageDescription</key>
