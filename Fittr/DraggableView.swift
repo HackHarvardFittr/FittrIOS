@@ -19,12 +19,12 @@ let ROTATION_ANGLE: Float = 3.14/8  //%%% Higher = stronger rotation angle
 
 
 protocol DragableDelegateView {
-    func swipeRight(view: UIView) -> Void
-    func swipeLeft(view: UIView) -> Void
+    func cardSwipedRight(view: UIView) -> Void
+    func cardSwipedLeft(view: UIView) -> Void
 }
 
 class DraggableView: UIView {
-//    var delegate = DragableDelegateView.self;
+    var delegate: DragableDelegateView!;
     var panGestureRecognizer: UIPanGestureRecognizer!;
     var originPoint: CGPoint!
 //    var overlayView: OverlayView!
@@ -99,13 +99,55 @@ class DraggableView: UIView {
         
     }
     
+    func rightAction()
+    {
+        let finishPoint: CGPoint = CGPoint.init(x: 500, y: 2 * CGFloat(yFromCenter) + self.originPoint.y)
+        UIView.animate(withDuration:0.3,
+                                   animations: {
+                                    self.center = finishPoint
+            }, completion: {
+                (value: Bool) in
+                self.removeFromSuperview()
+        })
+        delegate?.cardSwipedLeft(view: self)
+        
+    }
+    
+    func leftAction()
+    {
+        let finishPoint: CGPoint = CGPoint.init(x: -500, y: 2 * CGFloat(yFromCenter) + self.originPoint.y)
+        UIView.animate(withDuration:0.3,
+                       animations: {
+                        self.center = finishPoint
+            }, completion: {
+                (value: Bool) in
+                self.removeFromSuperview()
+        })
+        delegate?.cardSwipedLeft(view: self)
+        
+    }
+    
     
     func afterSwipeAction() -> Void
     {
         let floatXfromCenter = Float(xFromCenter)
         if floatXfromCenter > ACTION_MARGIN
         {
-            
+            self.rightAction()
+        }
+        else if floatXfromCenter < -ACTION_MARGIN
+        {
+            self.leftAction()
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.center = self.originPoint;
+                self.transform = CGAffineTransform(rotationAngle: 0)
+                
+                //overlay insert here
+
+            })
         }
         
     }
