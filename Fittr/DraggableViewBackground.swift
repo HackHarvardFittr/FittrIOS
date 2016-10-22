@@ -56,6 +56,15 @@ class DraggableViewBackground: UIView, DragableDelegateView {
                 cardsLoadedIndex = cardsLoadedIndex + 1
                 
             }
+            
+            for i in 0 ..< loadedCards.count {
+                if i > 0 {
+                    self.insertSubview(loadedCards[i], belowSubview: loadedCards[i - 1])
+                } else {
+                    self.addSubview(loadedCards[i])
+                }
+                cardsLoadedIndex = cardsLoadedIndex + 1
+            }
         }
         
     }

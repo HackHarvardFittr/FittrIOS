@@ -15,6 +15,8 @@
 		D85C25621DBB013300D691BA /* Fittr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D85C25601DBB013300D691BA /* Fittr.xcdatamodeld */; };
 		D85C25641DBB013300D691BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85C25631DBB013300D691BA /* Assets.xcassets */; };
 		D85C25671DBB013400D691BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85C25651DBB013300D691BA /* LaunchScreen.storyboard */; };
+		D8C52A361DBBDE760061D61B /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C52A341DBBDE760061D61B /* LandingPageViewController.swift */; };
+		D8C52A371DBBDE760061D61B /* LandingPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C52A351DBBDE760061D61B /* LandingPageViewController.xib */; };
 		D8F3924D1DBBAF6B009FEF15 /* TinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F3924C1DBBAF6B009FEF15 /* TinderViewController.swift */; };
 		D8F3924F1DBBAF9A009FEF15 /* DraggableViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F3924E1DBBAF9A009FEF15 /* DraggableViewBackground.swift */; };
 		D8F392511DBBAFCF009FEF15 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F392501DBBAFCF009FEF15 /* DraggableView.swift */; };
@@ -33,6 +35,8 @@
 		D85C25631DBB013300D691BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D85C25661DBB013300D691BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85C25681DBB013400D691BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8C52A341DBBDE760061D61B /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		D8C52A351DBBDE760061D61B /* LandingPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingPageViewController.xib; sourceTree = "<group>"; };
 		D8F3924C1DBBAF6B009FEF15 /* TinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderViewController.swift; sourceTree = "<group>"; };
 		D8F3924E1DBBAF9A009FEF15 /* DraggableViewBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableViewBackground.swift; sourceTree = "<group>"; };
 		D8F392501DBBAFCF009FEF15 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
@@ -88,17 +92,35 @@
 		D85C25581DBB013300D691BA /* Fittr */ = {
 			isa = PBXGroup;
 			children = (
+				D8C52A381DBBDE850061D61B /* LandingPageController */,
+				D8C52A331DBBDC4A0061D61B /* StripePayment */,
 				D8F3924B1DBBAF3A009FEF15 /* TinderSwipeEffect */,
 				D85C25591DBB013300D691BA /* AppDelegate.swift */,
 				D85C255B1DBB013300D691BA /* ViewController.swift */,
 				D85C255D1DBB013300D691BA /* Main.storyboard */,
-				76F5C6F31DBBC79000E4AF70 /* PaymentViewController.swift */,
 				D85C25631DBB013300D691BA /* Assets.xcassets */,
 				D85C25651DBB013300D691BA /* LaunchScreen.storyboard */,
 				D85C25681DBB013400D691BA /* Info.plist */,
 				D85C25601DBB013300D691BA /* Fittr.xcdatamodeld */,
 			);
 			path = Fittr;
+			sourceTree = "<group>";
+		};
+		D8C52A331DBBDC4A0061D61B /* StripePayment */ = {
+			isa = PBXGroup;
+			children = (
+				76F5C6F31DBBC79000E4AF70 /* PaymentViewController.swift */,
+			);
+			name = StripePayment;
+			sourceTree = "<group>";
+		};
+		D8C52A381DBBDE850061D61B /* LandingPageController */ = {
+			isa = PBXGroup;
+			children = (
+				D8C52A341DBBDE760061D61B /* LandingPageViewController.swift */,
+				D8C52A351DBBDE760061D61B /* LandingPageViewController.xib */,
+			);
+			name = LandingPageController;
 			sourceTree = "<group>";
 		};
 		D8F3924B1DBBAF3A009FEF15 /* TinderSwipeEffect */ = {
@@ -178,6 +200,7 @@
 				D85C25671DBB013400D691BA /* LaunchScreen.storyboard in Resources */,
 				D85C25641DBB013300D691BA /* Assets.xcassets in Resources */,
 				D85C255F1DBB013300D691BA /* Main.storyboard in Resources */,
+				D8C52A371DBBDE760061D61B /* LandingPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +262,7 @@
 				76F5C6F41DBBC79000E4AF70 /* PaymentViewController.swift in Sources */,
 				D8F392511DBBAFCF009FEF15 /* DraggableView.swift in Sources */,
 				D85C25621DBB013300D691BA /* Fittr.xcdatamodeld in Sources */,
+				D8C52A361DBBDE760061D61B /* LandingPageViewController.swift in Sources */,
 				D85C255C1DBB013300D691BA /* ViewController.swift in Sources */,
 				D8F3924D1DBBAF6B009FEF15 /* TinderViewController.swift in Sources */,
 				D85C255A1DBB013300D691BA /* AppDelegate.swift in Sources */,

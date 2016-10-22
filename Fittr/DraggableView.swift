@@ -44,9 +44,9 @@ class DraggableView: UIView {
         information = UILabel(frame: CGRect(x: 0, y: 50, width: self.frame.size.width, height: 100))
         information.text = "NOT AVAILABLE"
         information.textAlignment = NSTextAlignment.center
-        self.backgroundColor = UIColor.white;
+        self.backgroundColor = UIColor.red;
         
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "beingDragged:")
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DraggableView.beingDragged))
         self.addGestureRecognizer(panGestureRecognizer)
         self.addSubview((information))
         

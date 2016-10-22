@@ -11,5 +11,6 @@ target 'Fittr' do
     :git => 'https://github.com/Alamofire/Alamofire.git',
     :branch => 'master'
     pod 'Stripe'
+    pod 'SwiftGifOrigin'
 
 end

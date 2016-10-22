@@ -1,5 +1,5 @@
 //
-//  TinderViewController.swift
+//  LandingPageViewController.swift
 //  Fittr
 //
 //  Created by Aditya Maru on 2016-10-22.
@@ -7,16 +7,38 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
-class TinderViewController: UIViewController {
+class LandingPageViewController: UIViewController {
 
+    @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var staticBTN: UIButton!
+    @IBAction func newPartnerButton(_ sender: AnyObject) {
+    }
+    @IBAction func staticDetailButton(_ sender: AnyObject) {
+    }
+    
+    
+    func setupGif()
+    {
+      
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        var draggableViewBackground = DraggableViewBackground(frame: self.view.frame);
-        self.view.addSubview(draggableViewBackground)
         
+        staticBTN.frame = CGRect(x: 87, y: 233, width: 200, height: 200)
+        staticBTN.layer.cornerRadius = 0.5 * staticBTN.bounds.size.width
+        staticBTN.clipsToBounds = true
         // Do any additional setup after loading the view.
+        title = "Chootiya"
+        
+        let gifImage = UIImage.gifWithURL("http://i.imgur.com/gjaYulp.gif")
+        backgroundView.image = gifImage;
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

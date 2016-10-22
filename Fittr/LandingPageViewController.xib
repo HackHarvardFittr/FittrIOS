@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingPageViewController" customModule="Fittr" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="itK-Q9-Tbs" id="67i-2g-NPG"/>
+                <outlet property="staticBTN" destination="9ko-aP-TZY" id="Wma-7h-1DL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="itK-Q9-Tbs"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjK-LX-gYE">
+                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="GWe-nk-ES0"/>
+                        <constraint firstAttribute="width" constant="343" id="sOg-hf-06X"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Find a new partner">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="newPartnerButton:" destination="-1" eventType="touchUpInside" id="pw5-uB-aAy"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not getting along?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lK-p1-g2R">
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="GyY-hy-TrW"/>
+                        <constraint firstAttribute="height" constant="21" id="Z5u-DW-Elb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ko-aP-TZY">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Tas-ST-Otb"/>
+                        <constraint firstAttribute="width" constant="200" id="kff-8K-ZMB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="You vs. Partner">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="staticDetailButton:" destination="-1" eventType="touchUpInside" id="bbg-gd-JaF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9ko-aP-TZY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="233" id="0b5-WS-nm0"/>
+                <constraint firstItem="itK-Q9-Tbs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BoW-4z-fZ4"/>
+                <constraint firstItem="CjK-LX-gYE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Cjf-nA-I78"/>
+                <constraint firstItem="itK-Q9-Tbs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ELr-ak-hjt"/>
+                <constraint firstAttribute="bottom" secondItem="itK-Q9-Tbs" secondAttribute="bottom" id="bw4-Oz-fPM"/>
+                <constraint firstAttribute="bottom" secondItem="CjK-LX-gYE" secondAttribute="bottom" constant="39" id="dLG-8Y-XSI"/>
+                <constraint firstItem="9ko-aP-TZY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="dOu-nF-S8n"/>
+                <constraint firstItem="0lK-p1-g2R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="125" id="eN4-Oh-bbT"/>
+                <constraint firstItem="CjK-LX-gYE" firstAttribute="top" secondItem="0lK-p1-g2R" secondAttribute="bottom" constant="8" id="oi8-ln-gD4"/>
+                <constraint firstAttribute="trailing" secondItem="itK-Q9-Tbs" secondAttribute="trailing" id="qbx-PE-zEG"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="122.5"/>
+        </view>
+    </objects>
+</document>

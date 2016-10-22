@@ -72,7 +72,7 @@
                                 <state key="normal" title="Setup Stripe Payment"/>
                                 <connections>
                                     <action selector="stripeButton:" destination="y2X-3h-g4x" eventType="touchUpInside" id="xKv-sa-KgO"/>
-                                    <segue destination="CYj-Rt-gVe" kind="show" id="Cre-L0-zVf"/>
+                                    <segue destination="fRP-Vd-FXK" kind="show" id="zYn-R2-IPx"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="70" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="y2B-xN-HYc">
@@ -232,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9G-66-t75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904.8000000000002" y="-198.35082458770617"/>
+            <point key="canvasLocation" x="2033" y="-198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LqE-Sz-Dgu">
@@ -251,24 +251,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoI-ju-pkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="208.80000000000001" y="-198.35082458770617"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DUF-Qt-Asc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CYj-Rt-gVe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kzp-jO-FzB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fRP-Vd-FXK" kind="relationship" relationship="rootViewController" id="2tA-xh-2QP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Si9-9c-6b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1965.5999999999999" y="-198.35082458770617"/>
         </scene>
     </scenes>
     <resources>

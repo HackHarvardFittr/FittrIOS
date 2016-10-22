@@ -42,6 +42,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         //
         Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
             print(response)
+            
+            var draggableViewController = TinderViewController();
+            self.navigationController?.pushViewController(draggableViewController, animated: true)
         }
         
     }

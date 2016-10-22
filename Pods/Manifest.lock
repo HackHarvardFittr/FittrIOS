@@ -1,10 +1,12 @@
 PODS:
   - Alamofire (4.0.1)
   - Stripe (9.0.0)
+  - SwiftGifOrigin (1.5.3)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `master`)
   - Stripe
+  - SwiftGifOrigin
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -19,7 +21,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Stripe: 935c6deb5e96cbd29d247074bf3aa98a8438e22c
+  SwiftGifOrigin: 893ebcceabe215a00b607328b5322b4e228347e5
 
-PODFILE CHECKSUM: c45c1bbb2018fbc5af660cc8779a656de74645dc
+PODFILE CHECKSUM: 52330b0e0064c6bf6ff8d843fb26b3eb15ff4e9c
 
 COCOAPODS: 1.0.1

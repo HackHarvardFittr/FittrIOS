@@ -14,9 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var userDefaults = UserDefaults.standard;
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if(userDefaults.string(forKey: "name") == nil)
+        {
+           print("NO NAME")
+        }
+        else
+        {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let landingPage = LandingPageViewController();
+            
+            self.window?.rootViewController = landingPage;
+            self.window?.makeKeyAndVisible()
+            
+            return true
+        }
+        
         return true
     }
 
