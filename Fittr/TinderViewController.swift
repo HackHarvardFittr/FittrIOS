@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class TinderViewController: UIViewController {
-
+    var json:JSON!
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        var draggableViewBackground = DraggableViewBackground(frame: self.view.frame);
-        self.view.addSubview(draggableViewBackground)
+        
+        
+        
         
         // Do any additional setup after loading the view.
+    }
+    
+    func Setup(my_json: JSON)
+    {
+        self.json = my_json;
+        print(self.json)
+        var draggableViewBackground = DraggableViewBackground(frame: self.view.frame);
+        draggableViewBackground.Setup(my_json: self.json)
+        self.view.addSubview(draggableViewBackground)
+        
     }
 
     override func didReceiveMemoryWarning() {

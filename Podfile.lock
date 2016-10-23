@@ -3,12 +3,14 @@ PODS:
   - MLVerticalProgressView (0.1.0)
   - Stripe (9.0.0)
   - SwiftGifOrigin (1.5.3)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `master`)
   - MLVerticalProgressView
   - Stripe
   - SwiftGifOrigin
+  - SwiftyJSON
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -25,7 +27,8 @@ SPEC CHECKSUMS:
   MLVerticalProgressView: 1524a25eec9cda5860f94ba281c6d42ecee90880
   Stripe: 935c6deb5e96cbd29d247074bf3aa98a8438e22c
   SwiftGifOrigin: 893ebcceabe215a00b607328b5322b4e228347e5
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 1b2c0c8902309c9d330fc1bf61651149971071d1
+PODFILE CHECKSUM: aa7e5edb92d81fe4111fe31b620d68e5fbcd5f8f
 
 COCOAPODS: 1.0.1

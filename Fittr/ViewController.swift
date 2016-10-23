@@ -8,11 +8,14 @@
 
 import UIKit
 import Alamofire
+import MapKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
    
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var sliderOutlet: UISlider!
+    var didCalldelegate: Bool!
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var sliderAge: UILabel!
     @IBAction func slider(_ sender: AnyObject) {
@@ -28,7 +31,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         selectPicture();
         uploadButton.isHidden = true
     }
+    
+    
     @IBAction func stripeButton(_ sender: AnyObject) {
+        didCalldelegate = false
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        
         let parameter:Parameters = [
             "name" : nameInput.text!,
             "gymAddress" : gymInput.text!,
@@ -50,8 +68,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
         }
             
-            let draggableViewController = TinderViewController();
-            self.navigationController?.pushViewController(draggableViewController, animated: true)
+            
         }
     
     @IBOutlet weak var gymInput: UITextField!
@@ -198,6 +215,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
             print(response)
         }      }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if didCalldelegate == true {
+            return
+        }
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        //        let latNum = Double(locValue.latitude)
+        //        let longNum = Double(locValue.longitude)
+        let stringLat = "\(locValue.latitude)"
+        let stringLong = "\(locValue.longitude)"
+        print(stringLat)
+        userDefaults.set(stringLat, forKey: "lat")
+        userDefaults.set(stringLong, forKey: "long")
+        
+        didCalldelegate = true
+    }
 }
     
 

@@ -9,12 +9,42 @@
 import UIKit
 import SwiftGifOrigin
 import Alamofire
+import SwiftyJSON
 
 class LandingPageViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var staticBTN: UIButton!
     @IBAction func newPartnerButton(_ sender: AnyObject) {
+        
+        var url = "http://35.161.109.99:4900/populate"
+        var parameter = [
+            "userid" : userDefaults.string(forKey: "userid")!,
+            "latitude" : userDefaults.string(forKey: "lat")!,
+            "longitude" : userDefaults.string(forKey: "long")!
+        ]
+        
+        let headers = [
+            "Content-Type" : "application/x-www-form-urlencoded"
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseJSON { (response) in
+            
+            switch response.result
+            {
+            case .success(let value):
+                let json = JSON(value)
+                let draggableViewController = TinderViewController();
+                draggableViewController.Setup(my_json: json)
+                self.navigationController?.pushViewController(draggableViewController, animated: true)
+            case .failure(let Error):
+                print(Error)
+            }
+            
+        }
+
+        
+        
       
     }
     @IBAction func staticDetailButton(_ sender: AnyObject) {

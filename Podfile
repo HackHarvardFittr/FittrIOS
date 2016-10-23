@@ -13,5 +13,5 @@ target 'Fittr' do
     pod 'Stripe'
     pod 'SwiftGifOrigin'
     pod 'MLVerticalProgressView'
-
+    pod 'SwiftyJSON'
 end

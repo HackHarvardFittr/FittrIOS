@@ -8,10 +8,13 @@
 
 import UIKit
 import Foundation
+import Alamofire
+import SwiftyJSON
+import MapKit
 
-class DraggableViewBackground: UIView, DragableDelegateView {
+class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDelegate {
     
-    var exampleCardLabels: [String]!
+
     var allCards: [DraggableView]!
     
     let MAX_BUFFER_SIZE = 2
@@ -20,6 +23,13 @@ class DraggableViewBackground: UIView, DragableDelegateView {
     
     var cardsLoadedIndex: Int!
     var loadedCards: [DraggableView]!
+    var didCalldelegate: Bool!;
+    var userDefaults = UserDefaults.standard;
+    var json:JSON!;
+    
+   
+    
+    // Delegate method
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,21 +40,26 @@ class DraggableViewBackground: UIView, DragableDelegateView {
         super.init(frame: frame)
         super.layoutSubviews()
         self.setupView()
-        exampleCardLabels = ["first", "second", "third", "fourth", "last"]
+//        exampleCardLabels = ["first", "second", "third", "fourth", "last"]
         allCards = []
         loadedCards = []
         cardsLoadedIndex = 0
+
+    }
+    
+    func Setup(my_json: JSON)
+    {
+        self.json = my_json;
         self.loadCards()
-        
-        
+
     }
     
     func loadCards()
     {
-        if exampleCardLabels.count > 0
+        if json.count > 0
         {
-            let CardsLoadCap = exampleCardLabels.count > MAX_BUFFER_SIZE ? MAX_BUFFER_SIZE : exampleCardLabels.count
-            for i in 0 ..< exampleCardLabels.count
+            let CardsLoadCap = json.count > MAX_BUFFER_SIZE ? MAX_BUFFER_SIZE : json.count
+            for i in 0 ..< json.count
             {
                 var draggableView = self.createDraggableView(index: i)
                 allCards.append(draggableView)
@@ -70,7 +85,12 @@ class DraggableViewBackground: UIView, DragableDelegateView {
     func createDraggableView(index: Int)->DraggableView
     {
         var draggableView = DraggableView(frame: CGRect(x: (self.frame.size.width - CARD_WIDTH)/2, y: (self.frame.size.height - CARD_HEIGHT)/2, width: CARD_WIDTH, height: CARD_HEIGHT))
-        draggableView.name.text = exampleCardLabels[index]
+        draggableView.name.text = (((self.json.arrayValue)[index]).dictionaryValue)["name"]?.stringValue
+        draggableView.weight.text = (((self.json.arrayValue)[index]).dictionaryValue)["weight"]?.stringValue
+        draggableView.favWorkout.text = (((self.json.arrayValue)[index]).dictionaryValue)["favouriteWorkout"]?.stringValue
+        draggableView.myID = (((self.json.arrayValue)[index]).dictionaryValue)["userid"]?.stringValue
+
+
         draggableView.delegate = self
         return draggableView
     }
@@ -95,15 +115,50 @@ class DraggableViewBackground: UIView, DragableDelegateView {
     }
     
     func cardSwipedRight(view: UIView) {
+        let likeid = loadedCards[0].myID
+        userDefaults.set(likeid, forKey: "swipeRight")
         loadedCards.remove(at: 0)
         if cardsLoadedIndex < allCards.count
         {
             loadedCards.append(allCards[cardsLoadedIndex])
             cardsLoadedIndex = cardsLoadedIndex + 1
-            self.insertSubview(loadedCards[MAX_BUFFER_SIZE - 1], belowSubview: loadedCards[MAX_BUFFER_SIZE - 2])
+            var url = "http://35.161.109.99:4900/like"
+            var parameter = [
+                "userid" : userDefaults.string(forKey: "userid")!,
+                "likeid" : userDefaults.string(forKey: "swipeRight")!
+            ]
+            let headers = [
+                "Content-Type" : "application/x-www-form-urlencoded"
+            ]
+            
+            Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseJSON(completionHandler: { (checkin) in
+                if let result = checkin.result.value {
+                    let jsonDict = result as! NSDictionary
+                    if let boolVal = jsonDict["value"] {
+                        let stringBoolVal = boolVal as! String
+                        if stringBoolVal == "true"{
+                            let alertController = UIAlertController(title: "Match found!", message: "You have found a gym partner, GO LIFT!", preferredStyle: UIAlertControllerStyle.alert)
+                            
+                            let okAction = UIAlertAction(title: "Cool", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                            }
+                            alertController.addAction(okAction)
+                            self.window?.rootViewController?.present(alertController, animated: true, completion: nil);
+                        }
+                        else
+                        {
+                            self.insertSubview(self.loadedCards[self.MAX_BUFFER_SIZE - 1], belowSubview: self.loadedCards[self.MAX_BUFFER_SIZE - 2])
+                        }
+                        
+                    }
+                }
+                
+                
+            })
             
         }
+       
         
+    
     }
 
     /*

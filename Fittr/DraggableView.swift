@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Alamofire
 
 let ACTION_MARGIN: Float = 120      //%%% distance from center where the action applies. Higher = swipe further in order for the action to be called
 let SCALE_STRENGTH: Float = 4       //%%% how quickly the card shrinks. Higher = slower shrinking
@@ -24,6 +25,7 @@ protocol DragableDelegateView {
 }
 
 class DraggableView: UIView {
+    var userDefaults = UserDefaults.standard;
     var delegate: DragableDelegateView!;
     var panGestureRecognizer: UIPanGestureRecognizer!;
     var originPoint: CGPoint!
@@ -34,6 +36,7 @@ class DraggableView: UIView {
     var photo:UIImage!
     var xFromCenter: Float!
     var yFromCenter: Float!
+    var myID: String! = ""
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -117,7 +120,8 @@ class DraggableView: UIView {
                 (value: Bool) in
                 self.removeFromSuperview()
         })
-        delegate?.cardSwipedLeft(view: self)
+
+        delegate?.cardSwipedRight(view: self)
         
     }
     
