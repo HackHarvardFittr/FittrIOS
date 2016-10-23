@@ -52,9 +52,7 @@ class DraggableViewBackground: UIView, DragableDelegateView {
                 if i < CardsLoadCap
                 {
                     loadedCards.append(draggableView)
-                }
-                cardsLoadedIndex = cardsLoadedIndex + 1
-                
+                }                
             }
             
             for i in 0 ..< loadedCards.count {
@@ -72,7 +70,7 @@ class DraggableViewBackground: UIView, DragableDelegateView {
     func createDraggableView(index: Int)->DraggableView
     {
         var draggableView = DraggableView(frame: CGRect(x: (self.frame.size.width - CARD_WIDTH)/2, y: (self.frame.size.height - CARD_HEIGHT)/2, width: CARD_WIDTH, height: CARD_HEIGHT))
-        draggableView.information.text = exampleCardLabels[index]
+        draggableView.name.text = exampleCardLabels[index]
         draggableView.delegate = self
         return draggableView
     }

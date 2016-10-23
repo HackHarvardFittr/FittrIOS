@@ -41,29 +41,6 @@ class LandingPageViewController: UIViewController {
         let gifImage = UIImage.gifWithURL("http://i.imgur.com/gjaYulp.gif")
         backgroundView.image = gifImage;
         
-        
-        let url = "http://35.161.109.99:4900/stats"
-        let parameters = [
-            "userid" : userDefaults.string(forKey: "userid")!
-        ]
-        
-        let headers = [
-            "Content-Type" : "application/x-www-form-urlencoded"
-        ]
-        
-        
-        
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers) .responseJSON { (stats) in
-            
-            if let result = stats.result.value
-            {
-                let JSON = result as! NSDictionary
-                print(JSON["user"])
-                print(JSON["opponent"])
-                
-            }
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {

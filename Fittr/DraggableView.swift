@@ -28,7 +28,10 @@ class DraggableView: UIView {
     var panGestureRecognizer: UIPanGestureRecognizer!;
     var originPoint: CGPoint!
 //    var overlayView: OverlayView!
-    var information: UILabel!
+    var name: UILabel!
+    var weight: UILabel!
+    var favWorkout: UILabel!
+    var photo:UIImage!
     var xFromCenter: Float!
     var yFromCenter: Float!
     
@@ -41,14 +44,19 @@ class DraggableView: UIView {
         super.init(frame: frame);
         self.setupView();
         
-        information = UILabel(frame: CGRect(x: 0, y: 50, width: self.frame.size.width, height: 100))
-        information.text = "NOT AVAILABLE"
-        information.textAlignment = NSTextAlignment.center
+        name = UILabel(frame: CGRect(x: 0, y: 50, width: self.frame.size.width, height: 100))
+        weight = UILabel(frame: CGRect(x: 0, y: 70, width: self.frame.size.width, height: 100))
+        favWorkout = UILabel(frame: CGRect(x: 0, y: 90, width: self.frame.size.width, height: 100))
+        name.text = "NOT AVAILABLE"
+        name.textAlignment = NSTextAlignment.center
         self.backgroundColor = UIColor.red;
         
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DraggableView.beingDragged))
         self.addGestureRecognizer(panGestureRecognizer)
-        self.addSubview((information))
+        self.addSubview((name))
+        self.addSubview(weight)
+        self.addSubview(favWorkout)
+        
         
         // we need to setup the overlay here still
         

@@ -13,7 +13,20 @@ import MapKit
 import Alamofire
 
 class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
+    let userDefaults = UserDefaults.standard
+
+    @IBOutlet weak var nameB: UILabel!
+    @IBOutlet weak var nameA: UILabel!
     @IBOutlet weak var imageB: UIImageView!
+//    @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var stepsB: UILabel!
+    @IBOutlet weak var stepsA: UILabel!
+    @IBOutlet weak var imageA: UIImageView!
+    @IBOutlet weak var checkA: UIImageView!
+    @IBOutlet weak var checkB: UIImageView!
+    
+    
+    
     let locationManager = CLLocationManager()
     var didCallDelegate = false
     @IBAction func checkInButton(_ sender: AnyObject) {
@@ -30,12 +43,12 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+
     // Delegate method
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if didCallDelegate == true {
             return
         }
-        let userDefaults = UserDefaults.standard
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
 //        let latNum = Double(locValue.latitude)
 //        let longNum = Double(locValue.longitude)
@@ -62,13 +75,9 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         didCallDelegate = true
     }
     
-    @IBOutlet weak var backgroundView: UIImageView!
-    @IBOutlet weak var stepsB: UILabel!
-    @IBOutlet weak var stepsA: UILabel!
-    @IBOutlet weak var imageA: UIImageView!
-    @IBOutlet weak var checkA: UIImageView!
-    @IBOutlet weak var checkB: UIImageView!
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         let progressView = VerticalProgressView();
         let progressView_2 = VerticalProgressView();
@@ -81,7 +90,7 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         progressView.backgroundColor = UIColor(red: 115, green: 115, blue: 115, alpha: 1.0)
         progressView_2.backgroundColor = UIColor(red: 115, green: 115, blue: 115, alpha: 1.0);
         progressView.animationDuration = 0.7
-
+        
         self.view.addSubview(progressView)
         self.view.addSubview(progressView_2)
         
@@ -91,9 +100,65 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         stepsB.layer.borderWidth = 3.0
         checkMarkSet(imageView: checkA, gone: true)
         checkMarkSet(imageView: checkB, gone: false)
+        
+        let url = "http://35.161.109.99:4900/stats"
+        let parameters = [
+            "userid" : (userDefaults.string(forKey: "userid"))!
+        ]
+        
+        let headers = [
+            "Content-Type" : "application/x-www-form-urlencoded"
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers) .responseJSON { (stats) in
+            
+            var total: Float = 0.0
+            var x:Float = 0.0;
+            var y: Float = 0.0;
+            if let result = stats.result.value
+            {
+                let JSON = result as! NSDictionary
+                
+                if let JSON2 = JSON["user"] as? Dictionary<String, Any>
+                {
+                    self.nameA.text = JSON2["name"] as! String
+                    self.checkMarkSet(imageView: self.checkA, gone: (JSON2["goneToday"] as! Bool))
+                    x = JSON2["dailySteps"] as! Float
+                    self.stepsA.text = String(Int(x))
+                    total = total + x;
+//                    progressView.progress = JSON2["dailySteps"] as! Float
+                }
+                
+                if let JSON3 = JSON["opponent"] as? Dictionary<String, Any>
+                {
+                    self.nameB.text = JSON3["name"] as! String
+                    self.checkMarkSet(imageView: self.checkB, gone: (JSON3["goneToday"] as! Bool))
+                    y = JSON3["dailySteps"] as! Float
+                    self.stepsB.text = String(Int(y))
+                    total = total + y;
+                    
+                }
+                if(total == 0.0)
+                {
+                    progressView.setProgress(0.0, animated: true)
+                    progressView_2.setProgress(0.0, animated: true)
+                    
+                }
+                else
+                {
+                    
+                
+                    progressView.setProgress(x/total, animated: true)
+                    progressView_2.setProgress(y/total, animated: true)
+                }
+            
+            }
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
     }
-    
     func checkMarkSet(imageView: UIImageView, gone: Bool)
     {
         if(gone)

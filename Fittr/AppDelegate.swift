@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userDefaults = UserDefaults.standard;
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        /* if(userDefaults.string(forKey: "name") == nil)
+        if(userDefaults.string(forKey: "name") == nil)
         {
            print("NO NAME")
         }
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
             
             return true
-        } */
+        }
         
         return true
     }

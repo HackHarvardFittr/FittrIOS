@@ -12,6 +12,8 @@
                 <outlet property="checkB" destination="zA1-JY-vPL" id="UHH-Xg-WJP"/>
                 <outlet property="imageA" destination="5va-Ki-9EI" id="ek6-L5-mJu"/>
                 <outlet property="imageB" destination="pQV-gb-Lpk" id="VJJ-F1-Kde"/>
+                <outlet property="nameA" destination="scJ-eG-H5i" id="Jcg-vB-YVL"/>
+                <outlet property="nameB" destination="pa8-FN-ONj" id="T6l-Jc-Pmv"/>
                 <outlet property="stepsA" destination="W9j-jK-f01" id="sdB-3y-Nsm"/>
                 <outlet property="stepsB" destination="nZK-Rq-l8u" id="4hO-ij-etL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
