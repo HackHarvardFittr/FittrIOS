@@ -62,6 +62,7 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         didCallDelegate = true
     }
     
+    @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var stepsB: UILabel!
     @IBOutlet weak var stepsA: UILabel!
     @IBOutlet weak var imageA: UIImageView!
@@ -69,11 +70,10 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var checkB: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var progressView = VerticalProgressView();
-        var progressView_2 = VerticalProgressView();
-        progressView_2.frame = CGRect(x: 310, y: 320, width: 50, height: 150)
-        progressView.frame = CGRect(x: 20, y: 320, width: 50, height: 150)
+        let progressView = VerticalProgressView();
+        let progressView_2 = VerticalProgressView();
+        progressView_2.frame = CGRect(x: 320, y: 320, width: 30, height: 150)
+        progressView.frame = CGRect(x: 20, y: 320, width: 30, height: 150)
         progressView.progress = 0.5
         progressView_2.progress = 0.3
         progressView.fillDoneColor = UIColor.red;
@@ -85,8 +85,8 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(progressView)
         self.view.addSubview(progressView_2)
         
-        stepsA.layer.borderColor = UIColor.blue.cgColor
-        stepsB.layer.borderColor = UIColor.red.cgColor
+        stepsA.layer.borderColor = UIColor.black.cgColor
+        stepsB.layer.borderColor = UIColor.black.cgColor
         stepsA.layer.borderWidth = 3.0
         stepsB.layer.borderWidth = 3.0
         checkMarkSet(imageView: checkA, gone: true)

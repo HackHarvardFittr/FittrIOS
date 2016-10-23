@@ -29,13 +29,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         uploadButton.isHidden = true
     }
     @IBAction func stripeButton(_ sender: AnyObject) {
-        var parameter:Parameters = [
+        let parameter:Parameters = [
             "name" : nameInput.text!,
             "gymAddress" : gymInput.text!,
             "favouriteWorkout" : workoutArray[pickerMenu.selectedRow(inComponent: 0)],
             "weight" : sliderAge.text!
             ];
-        var url = "http://35.161.109.99:4900/submitprofile"
+        let url = "http://35.161.109.99:4900/submitprofile"
         let headers = [
             "Content-Type" : "application/x-www-form-urlencoded"
         ]
@@ -50,10 +50,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
         }
             
-            var draggableViewController = TinderViewController();
+            let draggableViewController = TinderViewController();
             self.navigationController?.pushViewController(draggableViewController, animated: true)
         }
-        
     
     @IBOutlet weak var gymInput: UITextField!
     @IBOutlet weak var pickerMenu: UIPickerView!
@@ -98,8 +97,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         workoutArray.append("Squat")
         workoutArray.append("OH")
         workoutArray.append("Barbell Rows")
-    }
-    
+}
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameInput.resignFirstResponder()
         gymInput.resignFirstResponder()
@@ -123,6 +122,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return workoutArray[row]
     }
     
@@ -198,6 +198,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
             print(response)
         }      }
+}
     
 
-}
+
