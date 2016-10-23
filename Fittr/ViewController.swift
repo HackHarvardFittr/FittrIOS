@@ -20,7 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     public var workoutArray = [String]()
-    public let userDefaults = UserDefaults.standard
+    public var userDefaults = UserDefaults.standard
     
     @IBOutlet weak var profilePicture: UIImageView!
 
@@ -40,13 +40,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             "Content-Type" : "application/x-www-form-urlencoded"
         ]
         //
-        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
-            print(response)
+        print("HHHH")
+        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseJSON { (response) in
+            if let result = response.result.value
+            {
+                let JSON = result as! NSDictionary
+                print(JSON["userid"])
+                self.userDefaults.set(JSON["userid"]!, forKey: "userid")
+            }
+        }
             
             let draggableViewController = TinderViewController();
             self.navigationController?.pushViewController(draggableViewController, animated: true)
         }
-    }
+
     
     @IBOutlet weak var gymInput: UITextField!
     @IBOutlet weak var pickerMenu: UIPickerView!
@@ -91,8 +98,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         workoutArray.append("Squat")
         workoutArray.append("OH")
         workoutArray.append("Barbell Rows")
-    }
-    
+}
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameInput.resignFirstResponder()
         gymInput.resignFirstResponder()
@@ -192,6 +199,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
             print(response)
         }      }
+}
     
 
-}
+

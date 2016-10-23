@@ -45,19 +45,19 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
         print(stringLong)
         userDefaults.set(stringLat, forKey: "lat")
         userDefaults.set(stringLong, forKey: "long")
-        print("latitude is: \(userDefaults.string(forKey: "lat"))")
-        print("longitude is: \(userDefaults.string(forKey: "long"))")
         let parameter:Parameters = [
             "latitude" : stringLat,
-            "longitude" : stringLong
+            "longitude" : stringLong,
+            "userid" : userDefaults.string(forKey: "userid")!
         ];
         let url = "http://35.161.109.99:4900/checkin"
         let headers = [
             "Content-Type" : "application/x-www-form-urlencoded"
         ]
         //
-        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .response { (response) in
-            print(response)
+        Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseString { (checkIn) in
+            print(checkIn)
+            
         }
         didCallDelegate = true
     }

@@ -8,19 +8,22 @@
 
 import UIKit
 import SwiftGifOrigin
+import Alamofire
 
 class LandingPageViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var staticBTN: UIButton!
     @IBAction func newPartnerButton(_ sender: AnyObject) {
-        var competitionController = CompetitionViewController()
-        self.navigationController?.pushViewController(competitionController, animated: true)
+      
     }
     @IBAction func staticDetailButton(_ sender: AnyObject) {
+        var competitionController = CompetitionViewController()
+        self.navigationController?.pushViewController(competitionController, animated: true)
+        
     }
     
-    
+    var userDefaults = UserDefaults.standard;
     func setupGif()
     {
       
@@ -33,13 +36,33 @@ class LandingPageViewController: UIViewController {
         staticBTN.layer.cornerRadius = 0.5 * staticBTN.bounds.size.width
         staticBTN.clipsToBounds = true
         // Do any additional setup after loading the view.
-        title = "Chootiya"
+        title = "Welcome to Fittr"
         
         let gifImage = UIImage.gifWithURL("http://i.imgur.com/gjaYulp.gif")
         backgroundView.image = gifImage;
         
         
+        let url = "http://35.161.109.99:4900/stats"
+        let parameters = [
+            "userid" : userDefaults.string(forKey: "userid")!
+        ]
         
+        let headers = [
+            "Content-Type" : "application/x-www-form-urlencoded"
+        ]
+        
+        
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers) .responseJSON { (stats) in
+            
+            if let result = stats.result.value
+            {
+                let JSON = result as! NSDictionary
+                print(JSON["user"])
+                print(JSON["opponent"])
+                
+            }
+        }
         
     }
 
