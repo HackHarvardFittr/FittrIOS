@@ -120,7 +120,7 @@ class DraggableView: UIView {
                 (value: Bool) in
                 self.removeFromSuperview()
         })
-
+        print("HERE")
         delegate?.cardSwipedRight(view: self)
         
     }

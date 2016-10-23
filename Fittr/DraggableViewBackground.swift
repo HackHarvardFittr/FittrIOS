@@ -122,6 +122,7 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
         {
             loadedCards.append(allCards[cardsLoadedIndex])
             cardsLoadedIndex = cardsLoadedIndex + 1
+        }
             var url = "http://35.161.109.99:4900/like"
             var parameter = [
                 "userid" : userDefaults.string(forKey: "userid")!,
@@ -132,10 +133,12 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
             ]
             
             Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseJSON(completionHandler: { (checkin) in
+                print(checkin)
                 if let result = checkin.result.value {
                     let jsonDict = result as! NSDictionary
                     if let boolVal = jsonDict["value"] {
                         let stringBoolVal = boolVal as! String
+                        print(stringBoolVal)
                         if stringBoolVal == "true"{
                             let alertController = UIAlertController(title: "Match found!", message: "You have found a gym partner, GO LIFT!", preferredStyle: UIAlertControllerStyle.alert)
                             
@@ -146,7 +149,10 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
                         }
                         else
                         {
-                            self.insertSubview(self.loadedCards[self.MAX_BUFFER_SIZE - 1], belowSubview: self.loadedCards[self.MAX_BUFFER_SIZE - 2])
+                            if self.cardsLoadedIndex < self.allCards.count
+                            {
+                                self.insertSubview(self.loadedCards[self.MAX_BUFFER_SIZE - 1], belowSubview: self.loadedCards[self.MAX_BUFFER_SIZE - 2])
+                            }
                         }
                         
                     }
@@ -169,4 +175,4 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
     }
     */
 
-}
+
