@@ -37,6 +37,7 @@ class DraggableView: UIView {
     var xFromCenter: Float!
     var yFromCenter: Float!
     var myID: String! = ""
+    var profileImage: UIImageView!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -47,18 +48,44 @@ class DraggableView: UIView {
         super.init(frame: frame);
         self.setupView();
         
-        name = UILabel(frame: CGRect(x: 0, y: 50, width: self.frame.size.width, height: 100))
-        weight = UILabel(frame: CGRect(x: 0, y: 70, width: self.frame.size.width, height: 100))
-        favWorkout = UILabel(frame: CGRect(x: 0, y: 90, width: self.frame.size.width, height: 100))
+        name = UILabel(frame: CGRect(x: 0, y: 200, width: self.frame.size.width, height: 150))
+        weight = UILabel(frame: CGRect(x: 0, y: 230, width: self.frame.size.width, height: 150))
+        favWorkout = UILabel(frame: CGRect(x: 0, y: 260, width: self.frame.size.width, height: 150))
+        profileImage = UIImageView(frame: CGRect(x:(self.frame.size.width / 2) / 2 - 30, y:20, width: 200, height: 200))
+        profileImage.clipsToBounds = true;
+        profileImage.layer.borderWidth = 1.0;
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.borderColor = UIColor.white.cgColor
+        profileImage.layer.cornerRadius = (profileImage.frame.size.width)/2
+        name.textColor = UIColor.black
+        weight.textColor = UIColor.black
+        favWorkout.textColor = UIColor.black
+        
+
+        
+
+        
         name.text = "NOT AVAILABLE"
         name.textAlignment = NSTextAlignment.center
-        self.backgroundColor = UIColor.red;
+//        name.font = UIFont.fontNames(forFamilyName: "Menlo")
+//        name.font = UIFont(descriptor: "Menlo", size: 19f)
+        let fontsize = self.name.font.pointSize
+        self.name.font = UIFont(name: "Menlo", size: fontsize + 6)
+        weight.font = UIFont(name: "Avenir", size: fontsize + 3)
+        favWorkout.font = UIFont(name: "Avenir", size: fontsize + 2)
+        
+        
+        favWorkout.textAlignment = NSTextAlignment.center
+        weight.textAlignment = NSTextAlignment.center
+        self.backgroundColor = UIColor.white;
+        self.alpha = CGFloat(0.9)
         
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DraggableView.beingDragged))
         self.addGestureRecognizer(panGestureRecognizer)
         self.addSubview((name))
         self.addSubview(weight)
         self.addSubview(favWorkout)
+        self.addSubview(profileImage)
         
         
         // we need to setup the overlay here still

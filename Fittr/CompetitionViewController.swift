@@ -118,14 +118,39 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
             if let result = stats.result.value
             {
                 let JSON = result as! NSDictionary
+                print("JSON IS: \(JSON)")
+                if(JSON["error"] as! String == "true") {
+                    let alertController = UIAlertController(title: "Error!", message: "You don't have a gym partner!", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                        
+                        self.navigationController?.popToRootViewController(animated: true)
+                    
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    return
+                }
                 
                 if let JSON2 = JSON["user"] as? Dictionary<String, Any>
                 {
                     self.nameA.text = JSON2["name"] as! String
                     self.checkMarkSet(imageView: self.checkA, gone: (JSON2["goneToday"] as! Bool))
                     x = JSON2["dailySteps"] as! Float
-                    self.stepsA.text = String(Int(x))
+                    let points = JSON2["dailyPoints"] as! String
+                    self.stepsA.text = points
                     total = total + x;
+                    let urlString = JSON2["imageURL"]
+                    if let url = URL(string: urlString as! String) {
+                        do {
+                            let data = try Data(contentsOf: url)
+                            self.imageA.image = UIImage(data: data)
+                        }
+                        catch {
+                            print("Error")
+                        }
+                    }
+                    
 //                    progressView.progress = JSON2["dailySteps"] as! Float
                 }
                 
@@ -134,9 +159,19 @@ class CompetitionViewController: UIViewController, CLLocationManagerDelegate {
                     self.nameB.text = JSON3["name"] as! String
                     self.checkMarkSet(imageView: self.checkB, gone: (JSON3["goneToday"] as! Bool))
                     y = JSON3["dailySteps"] as! Float
-                    self.stepsB.text = String(Int(y))
+                    let points = JSON3["dailyPoints"] as! String
+                    self.stepsB.text = points
                     total = total + y;
-                    
+                    let urlString = JSON3["imageURL"]
+                    if let url = URL(string: urlString as! String) {
+                        do {
+                            let data = try Data(contentsOf: url)
+                            self.imageB.image = UIImage(data: data)
+                        }
+                        catch {
+                            print("Error")
+                        }
+                    }
                 }
                 if(total == 0.0)
                 {

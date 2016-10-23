@@ -19,12 +19,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LOx-DB-3vR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhd-Io-OT3">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="JNE-w3-6wT"/>
-                                    <constraint firstAttribute="width" constant="200" id="llJ-IH-qqa"/>
+                                    <constraint firstAttribute="width" constant="200" id="Zmn-HJ-LgH"/>
+                                    <constraint firstAttribute="height" constant="200" id="iUO-OG-2m0"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="uploadImage"/>
+                                <connections>
+                                    <action selector="selectPic:" destination="y2X-3h-g4x" eventType="touchUpInside" id="MLO-qO-cMD"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K7V-bF-xqQ">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="9l7-LN-rGt"/>
@@ -40,10 +44,10 @@
                                     <constraint firstAttribute="width" constant="162" id="ym8-Xo-k36"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAj-eW-TZu">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="2Rc-v3-KNR"/>
                                     <constraint firstAttribute="width" constant="174" id="kPn-9C-x8T"/>
@@ -56,16 +60,12 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhd-Io-OT3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LOx-DB-3vR">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Zmn-HJ-LgH"/>
-                                    <constraint firstAttribute="height" constant="200" id="iUO-OG-2m0"/>
+                                    <constraint firstAttribute="height" constant="200" id="JNE-w3-6wT"/>
+                                    <constraint firstAttribute="width" constant="200" id="llJ-IH-qqa"/>
                                 </constraints>
-                                <state key="normal" image="uploadImage"/>
-                                <connections>
-                                    <action selector="selectPic:" destination="y2X-3h-g4x" eventType="touchUpInside" id="MLO-qO-cMD"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPN-5N-nGg">
                                 <frame key="frameInset" minX="16" minY="593" width="343" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,11 +89,10 @@
                                     <constraint firstAttribute="width" constant="78" id="kAh-xN-uoM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="K7V-bF-xqQ" firstAttribute="top" secondItem="LOx-DB-3vR" secondAttribute="bottom" constant="25" id="1Dh-3U-ooG"/>
                             <constraint firstItem="xb0-ah-z5d" firstAttribute="top" secondItem="K7V-bF-xqQ" secondAttribute="bottom" constant="61" id="1ea-1M-5Ta"/>

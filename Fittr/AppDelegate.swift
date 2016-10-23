@@ -9,13 +9,39 @@
 import UIKit
 import CoreData
 import MapKit
-
+import CoreMotion
+import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var didCalldelegate: Bool!
-
+    
+    func PedometerCall() {
+        if(CMPedometer.isStepCountingAvailable()) {
+            print("Sending data!")
+            let fromDate = Date(timeIntervalSinceNow: -86700 * 7)
+            pedometer.queryPedometerData(from: fromDate, to: Date(), withHandler: { (pedodata, error) in
+                print("DATA IS : \(pedodata)")
+                print("STEPS IS: \(pedodata?.numberOfSteps)")
+                let parameter:Parameters = [
+                    "pedometer": Int((pedodata?.numberOfSteps)!),
+                    "userid" : self.userDefaults.string(forKey: "userid")!
+                ];
+                let url = "http://35.161.109.99:4900/appstart"
+                let headers = [
+                    "Content-Type" : "application/x-www-form-urlencoded"
+                ]
+                Alamofire.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default, headers: headers) .responseString { (checkIn) in
+                    print("Sent data!")
+                }
+            })
+        }
+        else {
+            print("Cannot retrieve pedometer info")
+        }
+    }
+    
     var userDefaults = UserDefaults.standard;
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
+            PedometerCall()
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             let landingPage = LandingPageViewController();

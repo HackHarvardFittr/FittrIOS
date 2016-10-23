@@ -78,7 +78,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        uploadButton.clipsToBounds = true
+    
         profilePicture.clipsToBounds = true;
         profilePicture.layer.borderWidth = 1.0;
         profilePicture.layer.masksToBounds = true

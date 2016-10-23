@@ -44,7 +44,7 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
         allCards = []
         loadedCards = []
         cardsLoadedIndex = 0
-
+        self.backgroundColor = UIColor.init(red: 135/225, green: 206/225, blue: 250/225, alpha: 1.0)
     }
     
     func Setup(my_json: JSON)
@@ -86,9 +86,23 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
     {
         var draggableView = DraggableView(frame: CGRect(x: (self.frame.size.width - CARD_WIDTH)/2, y: (self.frame.size.height - CARD_HEIGHT)/2, width: CARD_WIDTH, height: CARD_HEIGHT))
         draggableView.name.text = (((self.json.arrayValue)[index]).dictionaryValue)["name"]?.stringValue
-        draggableView.weight.text = (((self.json.arrayValue)[index]).dictionaryValue)["weight"]?.stringValue
-        draggableView.favWorkout.text = (((self.json.arrayValue)[index]).dictionaryValue)["favouriteWorkout"]?.stringValue
+        draggableView.weight.text = "Weight : " + ((((self.json.arrayValue)[index]).dictionaryValue)["weight"]?.stringValue)!
+        draggableView.favWorkout.text = "Favourite Workout : " + ((((self.json.arrayValue)[index]).dictionaryValue)["favouriteWorkout"]?.stringValue)!
         draggableView.myID = (((self.json.arrayValue)[index]).dictionaryValue)["userid"]?.stringValue
+        if let url = URL(string: ((((self.json.arrayValue)[index]).dictionaryValue)["imageURL"]?.stringValue)!)
+        {
+            do
+            {
+                let data = try Data(contentsOf: url)
+                draggableView.profileImage.image = UIImage(data: data)
+            }
+            catch
+            {
+                print("error")
+            }
+        }
+        
+
 
 
         draggableView.delegate = self
@@ -143,6 +157,8 @@ class DraggableViewBackground: UIView, DragableDelegateView, CLLocationManagerDe
                             let alertController = UIAlertController(title: "Match found!", message: "You have found a gym partner, GO LIFT!", preferredStyle: UIAlertControllerStyle.alert)
                             
                             let okAction = UIAlertAction(title: "Cool", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                                self.window?.rootViewController?.navigationController?.popToRootViewController(animated: true)
+
                             }
                             alertController.addAction(okAction)
                             self.window?.rootViewController?.present(alertController, animated: true, completion: nil);
